@@ -16,6 +16,10 @@
 		6CD13CB828DC63E100057B68 /* WeatheerManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD13CB728DC63E100057B68 /* WeatheerManagerTests.swift */; };
 		6CD13CC228DC63E100057B68 /* WeatheerManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD13CC128DC63E100057B68 /* WeatheerManagerUITests.swift */; };
 		6CD13CC428DC63E100057B68 /* WeatheerManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD13CC328DC63E100057B68 /* WeatheerManagerUITestsLaunchTests.swift */; };
+		6CD13CD228DC67CE00057B68 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CD13CD128DC67CE00057B68 /* SnapKit */; };
+		6CD13CD428DC726D00057B68 /* NetworkWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD13CD328DC726D00057B68 /* NetworkWeather.swift */; };
+		6CD13CD628DC731D00057B68 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD13CD528DC731D00057B68 /* Constants.swift */; };
+		6CD13CD828DC7E8D00057B68 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD13CD728DC7E8D00057B68 /* AlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,9 @@
 		6CD13CBD28DC63E100057B68 /* WeatheerManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatheerManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD13CC128DC63E100057B68 /* WeatheerManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheerManagerUITests.swift; sourceTree = "<group>"; };
 		6CD13CC328DC63E100057B68 /* WeatheerManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheerManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6CD13CD328DC726D00057B68 /* NetworkWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWeather.swift; sourceTree = "<group>"; };
+		6CD13CD528DC731D00057B68 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6CD13CD728DC7E8D00057B68 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CD13CD228DC67CE00057B68 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +110,9 @@
 				6CD13CA028DC63DF00057B68 /* AppDelegate.swift */,
 				6CD13CA228DC63DF00057B68 /* SceneDelegate.swift */,
 				6CD13CA428DC63DF00057B68 /* ViewController.swift */,
+				6CD13CD728DC7E8D00057B68 /* AlertController.swift */,
+				6CD13CD328DC726D00057B68 /* NetworkWeather.swift */,
+				6CD13CD528DC731D00057B68 /* Constants.swift */,
 				6CD13CA628DC63DF00057B68 /* Main.storyboard */,
 				6CD13CA928DC63E100057B68 /* Assets.xcassets */,
 				6CD13CAB28DC63E100057B68 /* LaunchScreen.storyboard */,
@@ -143,6 +154,9 @@
 			dependencies = (
 			);
 			name = WeatheerManager;
+			packageProductDependencies = (
+				6CD13CD128DC67CE00057B68 /* SnapKit */,
+			);
 			productName = WeatheerManager;
 			productReference = 6CD13C9D28DC63DF00057B68 /* WeatheerManager.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +229,9 @@
 				Base,
 			);
 			mainGroup = 6CD13C9428DC63DF00057B68;
+			packageReferences = (
+				6CD13CD028DC67CE00057B68 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 6CD13C9E28DC63DF00057B68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,8 +275,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CD13CD628DC731D00057B68 /* Constants.swift in Sources */,
 				6CD13CA528DC63DF00057B68 /* ViewController.swift in Sources */,
+				6CD13CD428DC726D00057B68 /* NetworkWeather.swift in Sources */,
 				6CD13CA128DC63DF00057B68 /* AppDelegate.swift in Sources */,
+				6CD13CD828DC7E8D00057B68 /* AlertController.swift in Sources */,
 				6CD13CA328DC63DF00057B68 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +616,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6CD13CD028DC67CE00057B68 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6CD13CD128DC67CE00057B68 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CD13CD028DC67CE00057B68 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6CD13C9528DC63DF00057B68 /* Project object */;
 }
