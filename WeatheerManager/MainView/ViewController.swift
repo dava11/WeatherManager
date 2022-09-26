@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        singleCity = SingleCity.getData() ?? SingleCity()
+        singleCity = SingleCity.getData()
         loadData("Kiev")
         createMainView()
         createWeatherTableView()

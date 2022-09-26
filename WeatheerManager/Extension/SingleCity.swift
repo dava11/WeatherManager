@@ -17,7 +17,7 @@ struct SingleCity: Codable {
             UserDefaults.standard.set(singleCityEncoded, forKey: "singleCity")
         }
     }
-    static func getData() -> SingleCity? {
+    static func getData() -> SingleCity {
         var city = SingleCity()
         if let data = UserDefaults.standard.object(forKey: "singleCity") as? Data {
             if let decodedCity = try? PropertyListDecoder().decode(SingleCity.self, from: data) {
