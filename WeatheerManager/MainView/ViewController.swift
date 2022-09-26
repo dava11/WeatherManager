@@ -11,11 +11,12 @@ import SnapKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-    var dataSource = [Double]() {
+    var dataSource = (UserDefaults.standard.object(forKey: "dataSource") as? [Double]) ?? [] {
         didSet{
             DispatchQueue.main.async {
                 self.weatherTableView.reloadData()
             }
+            UserDefaults.standard.set(dataSource, forKey: "dataSource")
         }
     }
     var dateArray = [String]()
@@ -23,23 +24,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let dateFormater = DateFormatter()
     var dateLabel = UILabel()
     var cityLabel = UILabel()
-    var temperatureLabel = UILabel()
+    var temperatureLabel = UILabel() 
     var cityButton = UIButton()
     var weatherTableView = UITableView()
     let identifire = "Cell"
+    var singleCity = SingleCity() {
+        didSet{
+            DispatchQueue.main.async {
+                if let temp = self.singleCity.temp{
+                    self.temperatureLabel.text = String(Int(temp))+"°"
+                }
+                self.cityLabel.text = self.singleCity.city
+            }
+            self.singleCity.saveData()
+        }
+    }
     let networkCurrentWeather = NetworkWeather()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        singleCity = SingleCity.getData() ?? SingleCity()
         loadData("Kiev")
         createMainView()
         createWeatherTableView()
         networkCurrentWeather.futureCurrentWeather(forCity: "Kiev") { [weak self] weather in
             guard let self = self else { return }
             self.dataSource = weather.list.map{$0.temp.day}
-            self.createDateArray()
         }
+        createDateArray()
+        
+        
         
 
     }
@@ -93,12 +109,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     fileprivate func loadData(_ cityName: String) {
         self.networkCurrentWeather.fetchCurrentWeather(forCity: cityName) { weather in
-            DispatchQueue.main.async {
-                self.temperatureLabel.text = String(Int(weather.main.temp))+"°"
-            }
-            
+            self.singleCity = SingleCity(city: weather.name, temp: weather.main.temp)
         }
-        self.cityLabel.text = cityName
     }
     
     @objc func cityButtonTap() {
@@ -129,7 +141,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         var oneDayTime = TimeInterval()
         oneDayTime = 60 * 60 * 24
-        for _ in 0..<dataSource.count {
+        for _ in 0..<7 {
             
             date += oneDayTime
             dateFormater.dateFormat = "EEEE"
